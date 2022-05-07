@@ -1,0 +1,4 @@
+name = "JuBD"
+uuid = "aca3bb21-fc24-4aef-9fe9-4c987efa0b13"
+authors = ["Penghui Guo <m@guo.ph>"]
+version = "0.1.0"
