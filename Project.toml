@@ -1,5 +1,5 @@
 name = "Benders"
-uuid = "aca3bb21-fc24-4aef-9fe9-4c987efa0b13"
+uuid = "bc2a069c-916c-49da-b1f4-2acda23fec96"
 repo = "https://github.com/phguo/Benders.jl.git"
 authors = ["Penghui Guo <m@guo.ph>"]
 version = "0.1.0"
