@@ -1,9 +1,18 @@
 using JuMP
-import Gurobi
+using Random
+
+Random.seed!(999)
 
 
 function original_model()
-    # model = Model(Gurobi.Optimizer, add_bridges = false)
+    """
+        Define a mixed integer programming (MIP) where y is complicated varaibles (integer) and x is continues varaibles.
+    
+    (Reference: Rahmaniani, R., Crainic, T.G., Gendreau, M., Rei, W., 2017. The Benders decomposition algorithm: A literature review. European Journal of Operational Research 259, 801–817. https://doi.org/10.1016/j.ejor.2016.12.005)
+    
+    min  ...
+    s.t. ...
+    """
     model = Model()
     
     f = [i for i=1:3]
@@ -16,10 +25,10 @@ function original_model()
     D = randn(3, 3)
     d = [30 for i=1:3]
 
-    @variable(model, x[1:x_dim], lower_bound = 0, base_name = "__S__")
-    @variable(model, y[1:y_dim], Int, lower_bound = 0, base_name = "__M__")
-    @constraint(model, A * y .<= b, base_name = "__M__")
-    @constraint(model, B * y + D * x .<= d)
+    @variable(model, x[1:x_dim], lower_bound = 0, base_name = "__S__var")
+    @variable(model, y[1:y_dim], Int, lower_bound = 0, base_name = "__M__var")
+    @constraint(model, A * y .>= b, base_name = "__M__cons")
+    @constraint(model, B * y + D * x .>= d, base_name = "__S__cons")
     @expression(model, obj, sum(f[i] * x[i] for i=1:x_dim) + sum(c[i] * y[i] for i=1:y_dim))
     @objective(model, Min, obj)
     return model

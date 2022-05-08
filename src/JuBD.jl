@@ -1,5 +1,5 @@
 module JuBD
 
-greet() = print("Hello Benders!")
+include("benders.jl")
 
 end # module
