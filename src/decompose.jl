@@ -1,8 +1,7 @@
 using JuMP
 using MathOptInterface
 const MOI = MathOptInterface
-import Gurobi
-# import GLPK
+import GLPK
 
 MASTER_KW = "__M__"
 SUB_KW = "__S__"

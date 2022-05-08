@@ -3,3 +3,15 @@ uuid = "bc2a069c-916c-49da-b1f4-2acda23fec96"
 repo = "https://github.com/phguo/Benders.jl.git"
 authors = ["Penghui Guo <m@guo.ph>"]
 version = "0.1.0"
+
+[deps]
+JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
+MathOptInterface = "b8f27783-ece8-5eb3-8dc8-9495eed66fee"
+
+[compat]
+julia = "1.7"
+JuMP = "1.0.0"
+MathOptInterface = "1.2.0"
+
+[extras]
+GLPK = "60bf3e95-4087-53dc-ae20-288a0d20c6a6"
