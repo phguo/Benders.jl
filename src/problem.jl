@@ -19,17 +19,20 @@ function original_model()
     c = [i for i=1:3]
     y_dim = length(f)
     x_dim = length(c)
-    A = randn(3, 3)
-    b = [30 for i=1:3]
-    B = randn(3, 3)
-    D = randn(3, 3)
-    d = [30 for i=1:3]
+    A = rand(1:1, 3, 3)
+    b = [3 for i=1:3]
+    B = rand(1:1, 3, 3)
+    D = rand(1:1, 3, 3)
+    d = [6 for i=1:3]
 
     @variable(model, x[1:x_dim], lower_bound = 0, base_name = "__S__var")
     @variable(model, y[1:y_dim], Int, lower_bound = 0, base_name = "__M__var")
-    @constraint(model, A * y .>= b, base_name = "__M__cons")
-    @constraint(model, B * y + D * x .>= d, base_name = "__S__cons")
+
+    @constraint(model, A * y .== b, base_name = "__M__cons")
+    @constraint(model, B * y + D * x .== d, base_name = "__S__cons")
+
     @expression(model, obj, sum(f[i] * x[i] for i=1:x_dim) + sum(c[i] * y[i] for i=1:y_dim))
     @objective(model, Min, obj)
-    return model
+
+    return (model, f, c, A, b, B, D, d)
 end
