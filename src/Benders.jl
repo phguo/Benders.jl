@@ -4,7 +4,6 @@ using JuMP
 using MathOptInterface
 using GLPK
 
-include("problem.jl")
-include("decompose.jl")
+include("classical_benders.jl")
 
 end # module
